@@ -14,7 +14,7 @@ int main() {
     printf("Veuillez entrer le taux d'interet annuel (t, en pourcentage, ex: 4.5) : ");
     scanf("%lf", &taux_annuel);
 
-    printf("Veuillez entrer la durée du pret en annees (n) : ");
+    printf("Veuillez entrer la duree du pret en annees (n) : ");
     scanf("%d", &duree_annees);
 
     double taux_mensuel = (taux_annuel / 100.0) / 12.0;
