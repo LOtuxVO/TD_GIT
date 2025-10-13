@@ -42,7 +42,6 @@ int main() {
         mot_cache[i] = '*';
     }
     mot_cache[longueur_mot] = '\0'; 
-
     printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     printf("Le mot a ete cache. Que le jeu commence !\n");
 
