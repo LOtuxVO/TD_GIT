@@ -1,7 +1,6 @@
 #include    <stdio.h>
-
 int main() {
-
+    
     int secondes = 0;
 
     printf("Entrez un nombre de secondes : ");
@@ -12,6 +11,6 @@ int main() {
     int sec = secondes % 60;
 
     printf("%d secondes correspondent a %d heures, %d minutes et %d secondes.\n", secondes, heures, minutes, sec);
-    
+
     return 0;
 }
