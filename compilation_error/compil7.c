@@ -9,6 +9,6 @@ int main() {
     {
         tableau[j] = 1;
     }
-    printf("OK %d\n", tableau[5]);
+    printf("OK %d\n", tableau[4]); // On accède au dernier élément valide (indice 4)
     return 0;
 }

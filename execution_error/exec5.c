@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 int main() {
-    char s[5];
+    char s[5]=" "; // n'etait pas vide au debut
     s[0] = 'H';
     s[1] = 'e';
     s[2] = 'y';

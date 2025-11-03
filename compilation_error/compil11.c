@@ -3,7 +3,7 @@
 int main() {
     if (1) {
         printf("ok\n");
-    } else
+    } else { // accolade manquante
         printf("nope\n");
         }
     return 0;
