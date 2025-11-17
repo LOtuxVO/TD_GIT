@@ -3,6 +3,9 @@
 int main() {
     int taille;
 
+    int width = taille * taille;
+    int max_height = 3 * taille - 1;
+
     printf("Entrez une taille (entre 5 et 10) : ");
     scanf("%d", &taille);
 
