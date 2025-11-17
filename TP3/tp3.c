@@ -7,13 +7,13 @@ int main() {
     scanf("%d", &taille);
 
     while(taille < 5 || taille > 10) {
-        printf("Erreur : la taille doit etre entre 5 et 10 :\n");
+        printf("Erreur : la taille doit etre entre 5 et 10 : ");
         scanf("%d", &taille);
     }
 
-    char etoile[31][123];
     int width = taille * taille;
     int max_height = 3 * taille - 1;
+    char etoile[max_height][width];
 
     for (int i = 0; i < max_height; i++) {
         for (int j = 0; j < width; j++) {
@@ -21,39 +21,61 @@ int main() {
         }
     }
 
-    int midle = width / 2;
-
-    int gauche = midle;
-    int droite = midle;
+    int mid = width / 2;
+    int left = mid;
+    int right = mid;
 
     for (int i = 0; i < taille; i++) {
-
         for (int j = 0; j < width; j++) {
-
-            if (j == gauche || j == droite) {
+            if (j == left || j == right) {
                 etoile[i][j] = 'A';
             }
-            else if (j > gauche && j < droite) {
+            else if (j > left && j < right) {
                 etoile[i][j] = 'S';
             }
         }
-
-        gauche--;
-        droite++;
+        left--;
+        right++;
     }
 
-    for (int k = gauche + 1; k < droite; k++) {
+    int base_left = mid - (taille - 1);
+    int base_right = mid + (taille - 1);
+    for (int k = base_left; k <= base_right; k++) {
         etoile[taille][k] = '_';
     }
 
-        printf("\nEtoile de taille %d x %d.\n", taille, taille);
-    for (int i = 0; i < max_height; i++) {
-        for (int j = 0; j < width; j++) {
-            printf("%c", etoile[i][j]);
+    int ligne = taille + 1;
+    int left_body = base_left;
+    int right_body = base_right;
+
+    etoile[ligne][left_body] = '.';
+    etoile[ligne][right_body] = '.';
+    for (int j = left_body + 1; j < right_body; j++) {
+        etoile[ligne][j] = 'S';
+    }
+    ligne++;
+
+    while (left_body < right_body) {
+        left_body++;
+        right_body--;
+        if (left_body >= right_body)
+            break;
+
+        etoile[ligne][left_body] = '.';
+        etoile[ligne][right_body] = '.';
+        for (int j = left_body + 1; j < right_body; j++) {
+            etoile[ligne][j] = 'S';
         }
-        printf("\n");
+        ligne++;
     }
 
+    printf("\nÉtoile dessinee :\n");
+    for (int i = 0; i < max_height; i++) {
+        for (int j = 0; j < width; j++) {
+            putchar(etoile[i][j]);
+        }
+        putchar('\n');
+    }
 
     return 0;
 }
