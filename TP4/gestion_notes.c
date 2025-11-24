@@ -22,13 +22,13 @@ int lireChoix() {
 int saisirNombreEleves() {
     int nombreEleves;
 
-    do {
+    while (nombreEleves < 1 || nombreEleves > 30) {
         printf("Combien d'eleves dans la classe ? (entre 1 et 30) : ");
         scanf("%d", &nombreEleves);
         if (nombreEleves < 1 || nombreEleves > 30) {
             printf("Erreur : le nombre doit etre compris entre 1 et 30.\n");
         }
-    } while (nombreEleves < 1 || nombreEleves > 30);
+    }
 
     return nombreEleves;
 }
@@ -37,13 +37,13 @@ void saisirNotes(float notes[30][3], int nombreEleves) {
     for (int i = 0; i < nombreEleves; i++) {
         printf("\n--- Saisie des notes pour l'eleve %d ---\n", i + 1);
         for (int j = 0; j < 3; j++) {
-            do {
+            while (notes[i][j] < 0 || notes[i][j] > 20) {
                 printf("Note du controle %d : ", j + 1);
                 scanf("%f", &notes[i][j]);
                 if (notes[i][j] < 0 || notes[i][j] > 20) {
                     printf("Erreur : la note doit etre comprise entre 0 et 20.\n");
                 }
-            } while (notes[i][j] < 0 || notes[i][j] > 20);
+            }
         }
     }
 }
@@ -62,6 +62,15 @@ void afficherNotes(float notes[30][3], int nombreEleves) {
     }
 }
 
+float calculerMoyenneEleve(float notesEleve[3]) {
+    float somme = 0.0f;
+    for (int i = 0; i < 3; i++) {
+        somme += notesEleve[i];
+    }
+    return somme / 3.0f;
+}
+
+
 int main() {
     int choixUtilisateur;
     int nombreEleves = 0;
@@ -78,7 +87,7 @@ int main() {
             case 1:
                 nombreEleves = saisirNombreEleves();
                 printf("\nLe nombre d'eleves est maintenant de : %d\n", nombreEleves);
-                Sleep(1000);
+                Sleep(3000);
                 break;
             
             case 2:
@@ -88,7 +97,7 @@ int main() {
                     saisirNotes(notes, nombreEleves);
                     printf("\nSaisie des notes terminee.\n");
                 }
-                Sleep(1000);
+                Sleep(3000);
                 break;
 
             case 3:
@@ -98,6 +107,25 @@ int main() {
                     afficherNotes(notes, nombreEleves);
                 }
                 Sleep(5000);
+                break;
+
+            case 4:
+                if (nombreEleves == 0) {
+                    printf("\nErreur : Vous devez d'abord saisir les eleves et les notes.\n");
+                } else {
+                    int eleveChoisi;
+                    while (eleveChoisi < 1 || eleveChoisi > nombreEleves) {
+                        printf("\nCalculer la moyenne de quel eleve ? (1 a %d) : ", nombreEleves);
+                        scanf("%d", &eleveChoisi);
+                        if (eleveChoisi < 1 || eleveChoisi > nombreEleves) {
+                            printf("Numero d'eleve invalide.\n");
+                        }
+                    }
+
+                    float moyenne = calculerMoyenneEleve(notes[eleveChoisi - 1]);
+                    printf("La moyenne de l'eleve %d est : %.2f\n", eleveChoisi, moyenne);
+                }
+                Sleep(3000);
                 break;
 
             case 0:
