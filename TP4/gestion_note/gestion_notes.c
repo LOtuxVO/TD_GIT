@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <windows.h>
+#include "gestion_note.h"
 
 void afficherMenu() {
     printf("\n===== GESTION DE NOTES =====\n");
@@ -49,7 +50,6 @@ void saisirNotes(float notes[30][3], int nombreEleves) {
     }
 }
 
-
 void afficherNotes(float notes[30][3], int nombreEleves) {
     printf("\n--- Tableau des notes ---\n");
     printf("Eleve\tC1\tC2\tC3\n");
@@ -70,6 +70,7 @@ float calculerMoyenneEleve(float notesEleve[3]) {
     }
     return somme / 3.0f;
 }
+
 float calculerMoyenneGenerale(float notes[30][3], int nombreEleves) {
     float sommeDesMoyennes = 0.0f;
     for (int i = 0; i < nombreEleves; i++) {
@@ -77,6 +78,7 @@ float calculerMoyenneGenerale(float notes[30][3], int nombreEleves) {
     }
     return sommeDesMoyennes / nombreEleves;
 }
+
 float trouverMeilleureNoteControle(float notes[30][3], int nombreEleves, int indiceControle) {
     float meilleureNote = notes[0][indiceControle];
     for (int i = 1; i < nombreEleves; i++) {

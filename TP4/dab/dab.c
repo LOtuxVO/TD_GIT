@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <windows.h>
+#include "dab.h"
+
 
 void afficher_menu() {
     printf("\n===== DISTRIBUTEUR AUTOMATIQUE DE BILLETS =====\n");
