@@ -7,6 +7,7 @@ void afficher_menu() {
     printf("0 - Quitter\n");
 }
 
+// j'ai mis la verification de validite dans la meme fonction que saisir_montant
 int saisir_montant() {
     int montant = 0;
 
