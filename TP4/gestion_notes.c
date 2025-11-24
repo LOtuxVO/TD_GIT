@@ -77,6 +77,15 @@ float calculerMoyenneGenerale(float notes[30][3], int nombreEleves) {
     }
     return sommeDesMoyennes / nombreEleves;
 }
+float trouverMeilleureNoteControle(float notes[30][3], int nombreEleves, int indiceControle) {
+    float meilleureNote = notes[0][indiceControle];
+    for (int i = 1; i < nombreEleves; i++) {
+        if (notes[i][indiceControle] > meilleureNote) {
+            meilleureNote = notes[i][indiceControle];
+        }
+    }
+    return meilleureNote;
+}
 
 int main() {
     int choixUtilisateur;
@@ -84,6 +93,7 @@ int main() {
     int max_eleves = 30;
     int max_notes = 3;
     float notes[max_eleves][max_notes];
+    choixUtilisateur = -1; 
 
     while (choixUtilisateur != 0) {
         afficherMenu();
@@ -144,6 +154,20 @@ int main() {
                 Sleep(3000);
                 break;
 
+            case 6:
+                if (nombreEleves == 0) {
+                    printf("\nErreur : Vous devez d'abord saisir les eleves et les notes.\n");
+                } else {
+                    printf("\n--- Meilleures notes par controle ---\n");
+                    float meilleureC1 = trouverMeilleureNoteControle(notes, nombreEleves, 0);
+                    printf("Meilleure note du Controle 1 : %.2f\n", meilleureC1);
+                    float meilleureC2 = trouverMeilleureNoteControle(notes, nombreEleves, 1);
+                    printf("Meilleure note du Controle 2 : %.2f\n", meilleureC2);
+                    float meilleureC3 = trouverMeilleureNoteControle(notes, nombreEleves, 2);
+                    printf("Meilleure note du Controle 3 : %.2f\n", meilleureC3);
+                }
+                Sleep(4000);
+                break;
             case 0:
                 printf("\nAu revoir !\n");
                 break;
