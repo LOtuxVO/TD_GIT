@@ -63,9 +63,6 @@ int main() {
             etoile[y-1 >= 0 ? y-1 : y][j] = 'S';
     }
 
-
-
-
     int ligne_jambes = ligne_corps_debut + hauteur_corps - 1;
     int hauteur_jambes = taille;
     for (int i = 0; i < hauteur_jambes; i++) {
