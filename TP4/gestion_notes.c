@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <windows.h>
 
 void afficherMenu() {
     printf("\n===== GESTION DE NOTES =====\n");
@@ -14,39 +15,6 @@ void afficherMenu() {
 int lireChoix() {
     int choix;
     scanf("%d", &choix);
-    switch (choix)
-    {
-    case 1:
-        choix = 1 ;
-        break;
-    
-    case 2:
-        choix = 2 ;
-        break;
-    
-    case 3:
-        choix = 3 ;
-        break;
-    
-    case 4:
-        choix = 4 ;
-        break;
-    
-    case 5:
-        choix = 5 ;
-        break;
-    
-    case 6:
-        choix = 6 ;
-        break;
-    
-    case 0:
-        choix = 0 ;
-        break;
-    
-    default:
-        break;
-    }
 
     return choix;
 }
@@ -65,17 +33,81 @@ int saisirNombreEleves() {
     return nombreEleves;
 }
 
+void saisirNotes(float notes[30][3], int nombreEleves) {
+    for (int i = 0; i < nombreEleves; i++) {
+        printf("\n--- Saisie des notes pour l'eleve %d ---\n", i + 1);
+        for (int j = 0; j < 3; j++) {
+            do {
+                printf("Note du controle %d : ", j + 1);
+                scanf("%f", &notes[i][j]);
+                if (notes[i][j] < 0 || notes[i][j] > 20) {
+                    printf("Erreur : la note doit etre comprise entre 0 et 20.\n");
+                }
+            } while (notes[i][j] < 0 || notes[i][j] > 20);
+        }
+    }
+}
+
+
+void afficherNotes(float notes[30][3], int nombreEleves) {
+    printf("\n--- Tableau des notes ---\n");
+    printf("Eleve\tC1\tC2\tC3\n");
+    printf("--------------------------\n");
+    for (int i = 0; i < nombreEleves; i++) {
+        printf("%d\t", i + 1);
+        for (int j = 0; j < 3; j++) {
+            printf("%.2f\t", notes[i][j]); 
+        }
+        printf("\n"); 
+    }
+}
+
 int main() {
     int choixUtilisateur;
     int nombreEleves = 0;
-    
-    afficherMenu();
-    printf("Votre choix : ");
-    choixUtilisateur = lireChoix();
+    int max_eleves = 30;
+    int max_notes = 3;
+    float notes[max_eleves][max_notes];
 
-    if (choixUtilisateur == 1) {
-        nombreEleves = saisirNombreEleves();
-        printf("\nIl y a : %d eleves dans la classe\n", nombreEleves);
+    while (choixUtilisateur != 0) {
+        afficherMenu();
+        printf("\nVotre choix : ");
+        choixUtilisateur = lireChoix();
+
+        switch (choixUtilisateur) {
+            case 1:
+                nombreEleves = saisirNombreEleves();
+                printf("\nLe nombre d'eleves est maintenant de : %d\n", nombreEleves);
+                Sleep(1000);
+                break;
+            
+            case 2:
+                if (nombreEleves == 0) {
+                    printf("\nErreur : Vous devez d'abord saisir le nombre d'eleves (Option 1).\n");
+                } else {
+                    saisirNotes(notes, nombreEleves);
+                    printf("\nSaisie des notes terminee.\n");
+                }
+                Sleep(1000);
+                break;
+
+            case 3:
+                if (nombreEleves == 0) {
+                    printf("\nErreur : Aucune note a afficher. Saisissez d'abord le nombre d'eleves et les notes.\n");
+                } else {
+                    afficherNotes(notes, nombreEleves);
+                }
+                Sleep(5000);
+                break;
+
+            case 0:
+                printf("\nAu revoir !\n");
+                break;
+            
+            default:
+                printf("\nChoix invalide. Veuillez reessayer.\n");
+                break;
+        }
     }
     
     return 0;
