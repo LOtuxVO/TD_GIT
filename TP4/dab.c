@@ -16,7 +16,6 @@ int saisir_montant() {
             printf("Erreur : Saisie invalide. Veuillez entrer un nombre.\n");
             while (getchar() != '\n');
             montant = -1;
-            continue;
         }
 
         if (montant <= 0) {
@@ -28,7 +27,6 @@ int saisir_montant() {
         }else if (montant % 5 != 0) {
             printf("Erreur : Le montant doit etre un multiple de 5.\n");
         }
-
     }
 
     return montant;
@@ -79,7 +77,7 @@ int main() {
                 int montant_retrait = saisir_montant();
                 printf("\nDemande de retrait de %d EUR\n", montant_retrait);
                 calcul_distribution(montant_retrait);
-                Sleep(5000);
+                Sleep(4000);
                 break;
 
             case 0:
