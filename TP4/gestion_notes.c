@@ -20,7 +20,7 @@ int lireChoix() {
 }
 
 int saisirNombreEleves() {
-    int nombreEleves;
+    int nombreEleves = 0;
 
     while (nombreEleves < 1 || nombreEleves > 30) {
         printf("Combien d'eleves dans la classe ? (entre 1 et 30) : ");
@@ -37,7 +37,8 @@ void saisirNotes(float notes[30][3], int nombreEleves) {
     for (int i = 0; i < nombreEleves; i++) {
         printf("\n--- Saisie des notes pour l'eleve %d ---\n", i + 1);
         for (int j = 0; j < 3; j++) {
-            while (notes[i][j] < 0 || notes[i][j] > 20) {
+            notes[i][j] = -1.0f;
+            while (notes[i][j] < 0.0f || notes[i][j] > 20.0f) {
                 printf("Note du controle %d : ", j + 1);
                 scanf("%f", &notes[i][j]);
                 if (notes[i][j] < 0 || notes[i][j] > 20) {
@@ -69,7 +70,13 @@ float calculerMoyenneEleve(float notesEleve[3]) {
     }
     return somme / 3.0f;
 }
-
+float calculerMoyenneGenerale(float notes[30][3], int nombreEleves) {
+    float sommeDesMoyennes = 0.0f;
+    for (int i = 0; i < nombreEleves; i++) {
+        sommeDesMoyennes += calculerMoyenneEleve(notes[i]);
+    }
+    return sommeDesMoyennes / nombreEleves;
+}
 
 int main() {
     int choixUtilisateur;
@@ -120,10 +127,19 @@ int main() {
                         if (eleveChoisi < 1 || eleveChoisi > nombreEleves) {
                             printf("Numero d'eleve invalide.\n");
                         }
-                    }
-
+                    } while (eleveChoisi < 1 || eleveChoisi > nombreEleves);
                     float moyenne = calculerMoyenneEleve(notes[eleveChoisi - 1]);
                     printf("La moyenne de l'eleve %d est : %.2f\n", eleveChoisi, moyenne);
+                }
+                Sleep(3000);
+                break;
+            
+            case 5:
+                if (nombreEleves == 0) {
+                    printf("\nErreur : Vous devez d'abord saisir les eleves et les notes.\n");
+                } else {
+                    float moyenneGenerale = calculerMoyenneGenerale(notes, nombreEleves);
+                    printf("\nLa moyenne generale de la classe est : %.2f\n", moyenneGenerale);
                 }
                 Sleep(3000);
                 break;
