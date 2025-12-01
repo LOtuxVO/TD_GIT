@@ -2,6 +2,11 @@
 #define FICHIER
 
 void afficherMenu();
+
 int lireChoix();
 
-#endif // FICHIER
+void initialiserConsommation(int consommations[], int taille);
+
+void ajouterConsommation(int consommations[]);
+
+#endif
