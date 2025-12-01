@@ -21,7 +21,7 @@ void ajouterConsommation(int consommations[]) {
     int choixCategorie = 0;
     int quantite = 0;
 
-    printf("\n--- Quelle categorie voulez vous modifier ---\n");
+    printf("\n==== Quelle categorie voulez vous modifier ====n");
     printf("1. Eau      💧\n");
     printf("2. Café     ☕\n");
     printf("3. Bonbons  🍬\n");
@@ -168,7 +168,7 @@ void afficherBarre(int valeur, int max) {
 }
 
 void afficherScoreEtObjectifs(int consommations[], int objectifs[]) {
-    printf("\n--- Objectifs du jour ---\n\n");
+    printf("\n===== Objectifs du jour =====n\n");
 
     const char* categories[] = {
         "Eau", "Café", "Bonbons", "Gâteau", "Légumes", "Fruits", "Protéïnes"
@@ -177,7 +177,7 @@ void afficherScoreEtObjectifs(int consommations[], int objectifs[]) {
     int score = 0;
     
     printf("%-12s | %-12s | %s\n", "Catégorie", "Progrès", "Atteint ?");
-    printf("----------------------------------------\n");
+    printf("=================================\n");
 
     for (int i = 0; i < 7; i++) {
         if (objectifs[i] > 0) {
@@ -194,7 +194,8 @@ void afficherScoreEtObjectifs(int consommations[], int objectifs[]) {
 
     score = calculerScoreSante(consommations, objectifs);
 
-    printf("\nVotre score de santé pour aujourd'hui est de : %d / 100\n\n", score);
+    printf("\nScore de santé du jour : %d / 100\n\n", score);
+    printf("=================================\n");
     Sleep(4000);
 }
 
