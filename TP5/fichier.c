@@ -1,8 +1,5 @@
 #include "fichier.h"
 
-#include <stdio.h>
-#include <windows.h>
-
 void afficherMenu() {
     printf("===========================\n");
     printf("  Suivi de consommation\n");
@@ -58,4 +55,22 @@ void afficheResume(int consommations[]) {
     printf("Protéïnes : %d unités\n", consommations[6]);
     printf("\n");
     Sleep(3000);
+}
+
+int charger(int consommations[]) {
+    FILE * fichier = fopen("consommation.txt", "r");
+
+    if (fichier == NULL) {
+        return 0;
+    }
+
+    for (int i = 0; i < 7; i++) {
+        if (fscanf(fichier, "%d", &consommations[i]) != 1) {
+            fclose(fichier);
+            return 0;
+        }
+    }
+
+    fclose(fichier);
+    return 1;
 }

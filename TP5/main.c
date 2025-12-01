@@ -1,10 +1,15 @@
 #include "fichier.h"
 
-#include <stdio.h>
-#include <windows.h>
+// met potentiellement beaucoup de temps a ce lancer a cause de la lecture du fichier de sauvegarde
 
 int main() {
     int consommations[7] = {0};
+
+    if (charger(consommations)) {
+        printf("Données chargées avec succès.\n\n");
+    } else {
+        printf("Pas de fichier trouvé.\n\n");
+    }
 
     int choixUtilisateur = 0;
 
