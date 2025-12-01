@@ -3,6 +3,10 @@
 // met potentiellement beaucoup de temps a ce lancer a cause de la lecture du fichier de sauvegarde
 
 int main() {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    setlocale(LC_ALL, ".UTF-8");
+    
     int consommations[7] = {0};
 
     if (charger(consommations)) {
