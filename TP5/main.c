@@ -1,9 +1,10 @@
-#include <stdio.h>
 #include "fichier.h"
 
+#include <stdio.h>
+#include <windows.h>
+
 int main() {
-    int consommations[7];
-    initialiserConsommation(consommations, 7);
+    int consommations[7] = {0};
 
     int choixUtilisateur = 0;
 
@@ -17,13 +18,13 @@ int main() {
                 ajouterConsommation(consommations);
                 break;
             case 2:
-                printf("\n-> Action : Afficher le resume.\n\n");
+                afficheResume(consommations);
                 break;
             case 3:
                 printf("\n-> Action : Sauvegarde et fermeture du programme.\n");
                 break;
             default:
-                printf("\n-> Choix invalide, veuillez reessayer.\n\n");
+                printf("\n-> Choix invalide, veuillez réessayer.\n\n");
                 break;
         }
 

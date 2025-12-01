@@ -5,8 +5,8 @@ void afficherMenu();
 
 int lireChoix();
 
-void initialiserConsommation(int consommations[], int taille);
-
 void ajouterConsommation(int consommations[]);
+
+void afficheResume(int consommations[]);
 
 #endif
