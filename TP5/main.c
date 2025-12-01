@@ -18,7 +18,7 @@ int main() {
 
     int choixUtilisateur = 0;
 
-    while (choixUtilisateur != 4) {
+    while (choixUtilisateur != 5) {
         afficherMenu();
 
         choixUtilisateur = lireChoix();
@@ -34,6 +34,9 @@ int main() {
                 afficherScoreEtObjectifs(consommations, objectifs);
                 break;
             case 4:
+                afficherHistorique();
+                break;
+            case 5:
                 if (sauvegarder(consommations)) {
                     printf("\nDonnées sauvegardées avec succès.\n");
                 } else {

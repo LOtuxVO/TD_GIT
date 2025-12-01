@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <windows.h>
 #include <locale.h>
+#include <time.h>
 
 void afficherMenu();
 
@@ -28,5 +29,7 @@ void afficherBarre(int valeur, int max);
 void afficherScoreEtObjectifs(int consommations[], int objectifs[]);
 
 int calculerScoreSante(int consommations[], int objectifs[]);
+
+void afficherHistorique();
 
 #endif

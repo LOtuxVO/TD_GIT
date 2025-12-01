@@ -7,7 +7,8 @@ void afficherMenu() {
     printf("1. Ajout de consommation\n");
     printf("2. Afficher le résumé du jour\n");
     printf("3. Afficher le score de santé\n");
-    printf("4. Sauvegarder et quitter\n");
+    printf("4. Afficher l'historique\n");
+    printf("5. Sauvegarder et quitter\n");
 }
 
 int lireChoix() {
@@ -21,7 +22,7 @@ void ajouterConsommation(int consommations[]) {
     int choixCategorie = 0;
     int quantite = 0;
 
-    printf("\n==== Quelle categorie voulez vous modifier ====n");
+    printf("\n==== Quelle categorie voulez vous modifier ====\n");
     printf("1. Eau      💧\n");
     printf("2. Café     ☕\n");
     printf("3. Bonbons  🍬\n");
@@ -90,21 +91,28 @@ void afficheResume(int consommations[]) {
 }
 
 int charger(int consommations[]) {
-    FILE * fichier = fopen("consommation.txt", "r");
-
+    FILE *fichier = fopen("consommation.txt", "r");
     if (fichier == NULL) {
         return 0;
     }
 
-    for (int i = 0; i < 7; i++) {
-        if (fscanf(fichier, "%d", &consommations[i]) != 1) {
-            fclose(fichier);
-            return 0;
+    char date_buffer[11];
+    int temp_consommations[7];
+    int lignes_lues = 0;
+
+    while (fscanf(fichier, "%10s %d %d %d %d %d %d %d",
+                  date_buffer, &temp_consommations[0], &temp_consommations[1],
+                  &temp_consommations[2], &temp_consommations[3], &temp_consommations[4],
+                  &temp_consommations[5], &temp_consommations[6]) == 8)
+    {
+        for (int i = 0; i < 7; i++) {
+            consommations[i] = temp_consommations[i];
         }
+        lignes_lues++;
     }
 
     fclose(fichier);
-    return 1;
+    return lignes_lues > 0;
 }
 
 int sauvegarder(int consommations[]) {
@@ -113,6 +121,13 @@ int sauvegarder(int consommations[]) {
     if (fichier == NULL) {
         return 0;
     }
+
+    time_t t = time(NULL);
+    struct tm *tm = localtime(&t);
+    char date_str[11];
+    strftime(date_str, sizeof(date_str), "%Y-%m-%d", tm);
+
+    fprintf(fichier, "%s ", date_str);
 
     for (int i = 0; i < 7; i++) {
         fprintf(fichier, "%d ", consommations[i]);
@@ -231,4 +246,33 @@ int calculerScoreSante(int consommations[], int objectifs[]) {
     }
     
     return score;
+}
+
+void afficherHistorique() {
+    FILE *fichier = fopen("consommation.txt", "r");
+    if (fichier == NULL) {
+        printf("\nAucun historique de sauvegarde trouvé.\n\n");
+        Sleep(2000);
+        return;
+    }
+
+    printf("\n--- Historique complet des consommations ---\n\n");
+    printf("%-12s | %-4s | %-5s | %-8s | %-7s | %-8s | %-7s | %s\n",
+           "Date", "Eau", "Café", "Bonbons", "Gâteau", "Légumes", "Fruits", "Protéïnes");
+    printf("--------------------------------------------------------------------------------------\n");
+
+    char date_str[11];
+    int consos[7];
+
+    while (fscanf(fichier, "%10s %d %d %d %d %d %d %d",
+                  date_str, &consos[0], &consos[1], &consos[2], &consos[3], &consos[4], &consos[5], &consos[6]) == 8)
+    {
+        printf("%-12s | %-4d | %-5d | %-8d | %-7d | %-8d | %-7d | %d\n",
+               date_str, consos[0], consos[1], consos[2], consos[3], consos[4], consos[5], consos[6]);
+    }
+
+    fclose(fichier);
+    printf("\n");
+    Sleep(4000);
+
 }
