@@ -14,4 +14,6 @@ void afficheResume(int consommations[]);
 
 int charger(int consommations[]);
 
+int sauvegarder(int consommations[]);
+
 #endif

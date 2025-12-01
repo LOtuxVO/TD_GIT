@@ -74,3 +74,19 @@ int charger(int consommations[]) {
     fclose(fichier);
     return 1;
 }
+
+int sauvegarder(int consommations[]) {
+    FILE * fichier = fopen("consommation.txt", "w");
+
+    if (fichier == NULL) {
+        return 0;
+    }
+
+    for (int i = 0; i < 7; i++) {
+        fprintf(fichier, "%d ", consommations[i]);
+    }
+    fprintf(fichier, "\n");
+
+    fclose(fichier);
+    return 1;
+}

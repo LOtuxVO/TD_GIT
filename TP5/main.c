@@ -8,7 +8,7 @@ int main() {
     if (charger(consommations)) {
         printf("Données chargées avec succès.\n\n");
     } else {
-        printf("Pas de fichier trouvé.\n\n");
+        printf("Pas de sauvegarde trouvée.\n\n");
     }
 
     int choixUtilisateur = 0;
@@ -26,10 +26,14 @@ int main() {
                 afficheResume(consommations);
                 break;
             case 3:
-                printf("\n-> Action : Sauvegarde et fermeture du programme.\n");
+                if (sauvegarder(consommations)) {
+                    printf("\nDonnées sauvegardées avec succès.\n");
+                } else {
+                    printf("\nErreur lors de la sauvegarde des données.\n");
+                }
                 break;
             default:
-                printf("\n-> Choix invalide, veuillez réessayer.\n\n");
+                printf("\nChoix invalide, veuillez réessayer.\n\n");
                 break;
         }
 
