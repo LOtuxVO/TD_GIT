@@ -8,6 +8,7 @@ int main() {
     setlocale(LC_ALL, ".UTF-8");
     
     int consommations[7] = {0};
+    int objectifs[7] = {8, 0, 0, 0, 5, 3, 2};
 
     if (charger(consommations)) {
         printf("Données chargées avec succès.\n\n");
@@ -17,7 +18,7 @@ int main() {
 
     int choixUtilisateur = 0;
 
-    while (choixUtilisateur != 3) {
+    while (choixUtilisateur != 4) {
         afficherMenu();
 
         choixUtilisateur = lireChoix();
@@ -30,6 +31,9 @@ int main() {
                 afficheResume(consommations);
                 break;
             case 3:
+                afficherScoreEtObjectifs(consommations, objectifs);
+                break;
+            case 4:
                 if (sauvegarder(consommations)) {
                     printf("\nDonnées sauvegardées avec succès.\n");
                 } else {

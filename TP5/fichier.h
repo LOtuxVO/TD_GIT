@@ -23,4 +23,10 @@ int humeurLegumes(int nbLegumes);
 
 int humeurFruits(int nbFruits);
 
+void afficherBarre(int valeur, int max);
+
+void afficherScoreEtObjectifs(int consommations[], int objectifs[]);
+
+int calculerScoreSante(int consommations[], int objectifs[]);
+
 #endif
