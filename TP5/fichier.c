@@ -116,25 +116,45 @@ int charger(int consommations[]) {
 }
 
 int sauvegarder(int consommations[]) {
-    FILE * fichier = fopen("consommation.txt", "w");
+    time_t t = time(NULL);
+    struct tm *tm = localtime(&t);
+    char date_aujourdhui[11];
+    strftime(date_aujourdhui, sizeof(date_aujourdhui), "%Y-%m-%d", tm);
 
-    if (fichier == NULL) {
+    FILE *fichier_orig = fopen("consommation.txt", "r");
+    FILE *fichier_temp = fopen("temp.txt", "w");
+
+    if (fichier_temp == NULL) {
         return 0;
     }
 
-    time_t t = time(NULL);
-    struct tm *tm = localtime(&t);
-    char date_str[11];
-    strftime(date_str, sizeof(date_str), "%Y-%m-%d", tm);
-
-    fprintf(fichier, "%s ", date_str);
-
-    for (int i = 0; i < 7; i++) {
-        fprintf(fichier, "%d ", consommations[i]);
+    if (fichier_orig != NULL) {
+        char date_lue[11];
+        int consos_lues[7];
+        while (fscanf(fichier_orig, "%10s %d %d %d %d %d %d %d",
+                      date_lue, &consos_lues[0], &consos_lues[1], &consos_lues[2],
+                      &consos_lues[3], &consos_lues[4], &consos_lues[5], &consos_lues[6]) == 8)
+        {
+            if (strcmp(date_lue, date_aujourdhui) != 0) {
+                fprintf(fichier_temp, "%s %d %d %d %d %d %d %d\n",
+                        date_lue, consos_lues[0], consos_lues[1], consos_lues[2],
+                        consos_lues[3], consos_lues[4], consos_lues[5], consos_lues[6]);
+            }
+        }
+        fclose(fichier_orig);
     }
-    fprintf(fichier, "\n");
 
-    fclose(fichier);
+    fprintf(fichier_temp, "%s ", date_aujourdhui);
+    for (int i = 0; i < 7; i++) {
+        fprintf(fichier_temp, "%d ", consommations[i]);
+    }
+    fprintf(fichier_temp, "\n");
+
+    fclose(fichier_temp);
+
+    remove("consommation.txt");
+    rename("temp.txt", "consommation.txt");
+
     return 1;
 }
 
