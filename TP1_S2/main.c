@@ -19,14 +19,13 @@ int main() {
         return 1;
     }
 
-    char tableau[rangee][place];
+    int tableau[rangee][place];
 
     initTab(rangee, place, tableau);
 
     placerEleve(rangee, place, tableau, liste_eleves, nb_eleves);
     
-    afficherPlanDeClasse(rangee, place, liste_eleves, nb_eleves);
-    
+    afficherPlanDeClasse(rangee, place, tableau, liste_eleves);
     
     return 0;
 }
