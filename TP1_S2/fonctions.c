@@ -81,7 +81,7 @@ void afficherPlanDeClasse(int rangee, int place, Eleve liste_eleves[], int nb_el
         for (int j = 0; j < place; j++) {
             int eleve_index = i * place + j;
             if (eleve_index < nb_eleves) {
-                char nom_complet[102];
+                char nom_complet[150];
                 snprintf(nom_complet, sizeof(nom_complet), "%s %s", liste_eleves[eleve_index].prenom, liste_eleves[eleve_index].nom);
                 printf("| %-18.18s ", nom_complet);
             } else {
