@@ -25,10 +25,13 @@ int nombrePlace();
 
 void nomListe(char *nom_liste);
 
-void lireFichierEleves(const char *nom_fichier);
+int lireFichierEleves(const char *nom_fichier, Eleve liste_eleves[], int max_eleves);
 
-void initTab(char tableau[50][50], int rangee, int place);
+void initTab(int rangee, int place, char tableau[rangee][place]);
 
+void placerEleve(int rangee, int place, char tableau[rangee][place], Eleve liste_eleves[], int nb_eleves);
+
+void afficherPlanDeClasse(int rangee, int place, Eleve liste_eleves[], int nb_eleves);
 
 
 #endif

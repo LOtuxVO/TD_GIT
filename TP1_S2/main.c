@@ -4,22 +4,28 @@ int main() {
     
     int rangee = nombreRangee();
     int place = nombrePlace();
-    printf("Le nombre de rangee est : %d\n", rangee);
-    printf("Le nombre de place par rangee est : %d\n", place);
-
 
     char nom_liste[50];
     nomListe(nom_liste);
 
     printf("Le nom de la liste est : %s\n", nom_liste);
+    int MAX_ELEVES = rangee * place;
 
-    lireFichierEleves(nom_liste);
+    Eleve liste_eleves[MAX_ELEVES];
+    int nb_eleves = lireFichierEleves(nom_liste, liste_eleves, MAX_ELEVES);
+
+    if (nb_eleves == 0) {
+        printf("Aucun eleve lu depuis le fichier. Le programme va se terminer.\n");
+        return 1;
+    }
 
     char tableau[rangee][place];
 
-    initTab(tableau, rangee, place);
-    printf("tableau initialise\n");
+    initTab(rangee, place, tableau);
 
+    placerEleve(rangee, place, tableau, liste_eleves, nb_eleves);
+    
+    afficherPlanDeClasse(rangee, place, liste_eleves, nb_eleves);
     
     
     return 0;

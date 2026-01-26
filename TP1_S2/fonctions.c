@@ -25,28 +25,73 @@ void nomListe(char *nom_liste) {
     
 }
 
-void lireFichierEleves(const char *nom_fichier) {
+int lireFichierEleves(const char *nom_fichier, Eleve liste_eleves[], int max_eleves) {
     FILE *fichier = fopen(nom_fichier, "r");
     if (fichier == NULL) {
-        printf("Erreur lors de l'ouverture du fichier");
-        return;
+        perror("Erreur lors de l'ouverture du fichier");
+        return 0;
     }
 
-    Eleve eleve;
-    printf("\n--- Lecture du fichier ---\n");
-    while (fscanf(fichier, "%49s %49s", eleve.prenom, eleve.nom) == 2) {
-        printf("Eleve lu : %s %s\n", eleve.prenom, eleve.nom);
+    int nb_eleves = 0;
+    printf("\n--- Liste des eleves ---\n");
+    while (nb_eleves < max_eleves && fscanf(fichier, "%49s %49s", liste_eleves[nb_eleves].prenom, liste_eleves[nb_eleves].nom) == 2) {
+        printf("- %s %s\n", liste_eleves[nb_eleves].prenom, liste_eleves[nb_eleves].nom);
+        nb_eleves++;
     }
 
     fclose(fichier);
+    return nb_eleves;
 }
 
-void initTab(char tableau[50][50], int rangee, int place) {
-    int x = rangee;
-    int y = place;
-    for (int i = 0; i < x; i++) {
-        for (int j = 0; j < y; j++) {
+void initTab(int rangee, int place, char tableau[rangee][place]) {
+    for (int i = 0; i < rangee; i++) {
+        for (int j = 0; j < place; j++) {
             tableau[i][j] = '0';
         }
     }
+}
+
+void placerEleve(int rangee, int place, char tableau[rangee][place], Eleve liste_eleves[], int nb_eleves) {
+    if (nb_eleves > rangee * place) {
+        printf("\nAttention : il n'y a pas assez de places pour tous les eleves.\n");
+        printf("%d eleves pour %d places.\n", nb_eleves, rangee * place);
+    }
+
+    int eleve_actuel = 0;
+    printf("\n--- Placement des eleves ---\n");
+    for (int i = 0; i < rangee; i++) {
+        for (int j = 0; j < place; j++) {
+            if (eleve_actuel < nb_eleves) {
+                tableau[i][j] = '1';
+                printf("Eleve : %s %s - rangee : %d - siege : %d\n", liste_eleves[eleve_actuel].prenom, liste_eleves[eleve_actuel].nom, i + 1, j + 1);
+                eleve_actuel++;
+            }
+        }
+    }
+}
+
+void afficherPlanDeClasse(int rangee, int place, Eleve liste_eleves[], int nb_eleves) {
+    printf("\n\n--- Plan de Classe ---\n");
+    for (int i = 0; i < rangee; i++) {
+        for (int k = 0; k < place; k++) {
+            printf("+--------------------");
+        }
+        printf("+\n");
+
+        for (int j = 0; j < place; j++) {
+            int eleve_index = i * place + j;
+            if (eleve_index < nb_eleves) {
+                char nom_complet[102];
+                snprintf(nom_complet, sizeof(nom_complet), "%s %s", liste_eleves[eleve_index].prenom, liste_eleves[eleve_index].nom);
+                printf("| %-18.18s ", nom_complet);
+            } else {
+                printf("| %-18s ", "Vide");
+            }
+        }
+        printf("|\n");
+    }
+    for (int k = 0; k < place; k++) {
+        printf("+--------------------");
+    }
+    printf("+\n");
 }
