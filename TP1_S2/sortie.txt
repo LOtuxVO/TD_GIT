@@ -1,34 +1,34 @@
 --- Placement des eleves ---
-Eleve : Louis BORDELAIS - rangee : 1 - siege : 1
-Eleve : Louis BLANC - rangee : 6 - siege : 8
-Eleve : Wilhelm MACAIGNE - rangee : 1 - siege : 7
-Eleve : Jed BENSLAMA - rangee : 6 - siege : 2
-Eleve : Louis GUERIN - rangee : 3 - siege : 4
-Eleve : Amal ELHIRECH - rangee : 6 - siege : 5
-Eleve : Anatole MAURIAC - rangee : 3 - siege : 8
-Eleve : Lucas COELHO - rangee : 4 - siege : 1
-Eleve : Lucas VERRON - rangee : 4 - siege : 6
-Eleve : Edgar PULLES - rangee : 1 - siege : 3
-Eleve : Florian BAILLY - rangee : 1 - siege : 5
-Eleve : Mathieu BERTRON - rangee : 3 - siege : 2
-Eleve : Alexandre MOULIS - rangee : 5 - siege : 3
-Eleve : Hatem MARHRAOUI - rangee : 2 - siege : 6
-Eleve : Malo HAMON - rangee : 5 - siege : 7
-Eleve : Adam JAKUBOWSKI - rangee : 1 - siege : 2
-Eleve : Anaelle SOUINI-RENAUDON - rangee : 1 - siege : 4
+Eleve : Lucas COELHO - rangee : 1 - siege : 1
+Eleve : Louis BLANC - rangee : 6 - siege : 7
+Eleve : Amal ELHIRECH - rangee : 1 - siege : 6
+Eleve : Louis BORDELAIS - rangee : 6 - siege : 1
+Eleve : Florian BAILLY - rangee : 4 - siege : 4
+Eleve : Lucas VERRON - rangee : 2 - siege : 3
+Eleve : Anaelle SOUINI-RENAUDON - rangee : 3 - siege : 7
+Eleve : Edgar PULLES - rangee : 3 - siege : 1
+Eleve : Jed BENSLAMA - rangee : 6 - siege : 3
+Eleve : Hatem MARHRAOUI - rangee : 6 - siege : 5
+Eleve : Wilhelm MACAIGNE - rangee : 1 - siege : 4
+Eleve : Adam JAKUBOWSKI - rangee : 3 - siege : 5
+Eleve : Anatole MAURIAC - rangee : 4 - siege : 2
+Eleve : Louis GUERIN - rangee : 4 - siege : 6
+Eleve : Malo HAMON - rangee : 1 - siege : 3
+Eleve : Alexandre MOULIS - rangee : 1 - siege : 5
+Eleve : Mathieu BERTRON - rangee : 1 - siege : 7
 
 
 --- Plan de Classe ---
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Louis BORDELAIS    | Adam JAKUBOWSKI    | Edgar PULLES       | Anaelle SOUINI-REN | Florian BAILLY     | Vide               | Wilhelm MACAIGNE   | Vide               |
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Vide               | Vide               | Vide               | Vide               | Vide               | Hatem MARHRAOUI    | Vide               | Vide               |
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Vide               | Mathieu BERTRON    | Vide               | Louis GUERIN       | Vide               | Vide               | Vide               | Anatole MAURIAC    |
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Lucas COELHO       | Vide               | Vide               | Vide               | Vide               | Lucas VERRON       | Vide               | Vide               |
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Vide               | Vide               | Alexandre MOULIS   | Vide               | Vide               | Vide               | Malo HAMON         | Vide               |
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Vide               | Jed BENSLAMA       | Vide               | Vide               | Amal ELHIRECH      | Vide               | Vide               | Louis BLANC        |
-+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+| Lucas COELHO       | Vide               | Malo HAMON         | Wilhelm MACAIGNE   | Alexandre MOULIS   | Amal ELHIRECH      | Mathieu BERTRON    |
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+| Vide               | Vide               | Lucas VERRON       | Vide               | Vide               | Vide               | Vide               |
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+| Edgar PULLES       | Vide               | Vide               | Vide               | Adam JAKUBOWSKI    | Vide               | Anaelle SOUINI-REN |
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+| Vide               | Anatole MAURIAC    | Vide               | Florian BAILLY     | Vide               | Louis GUERIN       | Vide               |
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+| Vide               | Vide               | Vide               | Vide               | Vide               | Vide               | Vide               |
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
+| Louis BORDELAIS    | Vide               | Jed BENSLAMA       | Vide               | Hatem MARHRAOUI    | Vide               | Louis BLANC        |
++--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
