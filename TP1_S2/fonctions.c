@@ -3,7 +3,7 @@
 int nombreRangee() {
     int rangee;
 
-    printf("Combien de rangee voulez vous ? : ");
+    printf("Combien de rangee voulez vous (max 6) ? : ");
     scanf("%d", &rangee);
 
     return rangee;
@@ -12,7 +12,7 @@ int nombreRangee() {
 int nombrePlace() {
     int place;
 
-    printf("Combien de place voulez vous par rangee ? : ");
+    printf("Combien de place voulez vous par rangee (max 9 en fullscreen) ? : ");
     scanf("%d", &place);
 
     return place;
@@ -20,7 +20,7 @@ int nombrePlace() {
 
 void nomListe(char *nom_liste) {
 
-    printf("Quel est le nom de la liste ? : ");
+    printf("Quel est le nom de la liste (.txt) ? : ");
     scanf("%49s", nom_liste);
     
 }
@@ -41,6 +41,17 @@ int lireFichierEleves(const char *nom_fichier, Eleve liste_eleves[], int max_ele
 
     fclose(fichier);
     return nb_eleves;
+}
+
+void melangerEleves(Eleve liste_eleves[], int nb_eleves) {
+    if (nb_eleves > 1) {
+        for (int i = nb_eleves - 1; i > 0; i--) {
+            int j = rand() % (i + 1);
+            Eleve temp = liste_eleves[i];
+            liste_eleves[i] = liste_eleves[j];
+            liste_eleves[j] = temp;
+        }
+    }
 }
 
 void initTab(int rangee, int place, int tableau[rangee][place]) {

@@ -1,6 +1,7 @@
 #include "pointH.h"
 
 int main() {
+    srand(time(NULL));
     
     int rangee = nombreRangee();
     int place = nombrePlace();
@@ -18,6 +19,8 @@ int main() {
         printf("Aucun eleve lu depuis le fichier. Le programme va se terminer.\n");
         return 1;
     }
+
+    melangerEleves(liste_eleves, nb_eleves);
 
     int tableau[rangee][place];
 
