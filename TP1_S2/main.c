@@ -30,5 +30,7 @@ int main() {
     
     afficherPlanDeClasse(rangee, place, tableau, liste_eleves);
     
+    enregistrerPlanDeClasse("sortie.txt", rangee, place, tableau, liste_eleves, nb_eleves);
+    
     return 0;
 }

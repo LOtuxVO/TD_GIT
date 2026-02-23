@@ -35,4 +35,6 @@ void placerEleve(int rangee, int place, int tableau[rangee][place], Eleve liste_
 
 void afficherPlanDeClasse(int rangee, int place, int plan[rangee][place], Eleve liste_eleves[]);
 
+void enregistrerPlanDeClasse(const char *nom_fichier, int rangee, int place, int plan[rangee][place], Eleve liste_eleves[], int nb_eleves);
+
 #endif

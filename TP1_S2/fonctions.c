@@ -185,3 +185,66 @@ void afficherPlanDeClasse(int rangee, int place, int plan[rangee][place], Eleve 
     }
     printf("+\n");
 }
+
+void enregistrerPlanDeClasse(const char *nom_fichier, int rangee, int place, int plan[rangee][place], Eleve liste_eleves[], int nb_eleves) {
+    FILE *fichier = fopen(nom_fichier, "w");
+    if (fichier == NULL) {
+        perror("Erreur lors de la creation du fichier de sortie");
+        return;
+    }
+
+    int eleves_a_placer = (nb_eleves > rangee * place) ? (rangee * place) : nb_eleves;
+
+    fprintf(fichier, "--- Placement des eleves ---\n");
+
+    if (eleves_a_placer > 0) {
+        typedef struct {
+            int r, c;
+        } Position;
+        Position positions[eleves_a_placer];
+
+        for (int r = 0; r < rangee; r++) {
+            for (int c = 0; c < place; c++) {
+                if (plan[r][c] != -1) {
+                    int eleve_index = plan[r][c];
+                    if (eleve_index < eleves_a_placer) {
+                        positions[eleve_index].r = r;
+                        positions[eleve_index].c = c;
+                    }
+                }
+            }
+        }
+
+        for (int k = 0; k < eleves_a_placer; k++) {
+            fprintf(fichier, "Eleve : %s %s - rangee : %d - siege : %d\n", 
+                    liste_eleves[k].prenom, liste_eleves[k].nom, positions[k].r + 1, positions[k].c + 1);
+        }
+    }
+
+    fprintf(fichier, "\n\n--- Plan de Classe ---\n");
+    for (int i = 0; i < rangee; i++) {
+        for (int k = 0; k < place; k++) {
+            fprintf(fichier, "+--------------------");
+        }
+        fprintf(fichier, "+\n");
+        for (int j = 0; j < place; j++) {
+            int eleve_index = plan[i][j];
+            if (eleve_index != -1) {
+                char nom_complet[102];
+                snprintf(nom_complet, sizeof(nom_complet), "%s %s", liste_eleves[eleve_index].prenom,
+                         liste_eleves[eleve_index].nom);
+                fprintf(fichier, "| %-18.18s ", nom_complet);
+            } else {
+                fprintf(fichier, "| %-18s ", "Vide");
+            }
+        }
+        fprintf(fichier, "|\n");
+    }
+    for (int k = 0; k < place; k++) {
+        fprintf(fichier, "+--------------------");
+    }
+    fprintf(fichier, "+\n");
+
+    fclose(fichier);
+    printf("\nPlan de classe enregistre dans le fichier %s\n", nom_fichier);
+}
