@@ -246,5 +246,5 @@ void enregistrerPlanDeClasse(const char *nom_fichier, int rangee, int place, int
     fprintf(fichier, "+\n");
 
     fclose(fichier);
-    printf("\nPlan de classe enregistre dans le fichier %s\n", nom_fichier);
+    printf("\nPlan de classe enregistre dans le fichier %s\n\n", nom_fichier);
 }
