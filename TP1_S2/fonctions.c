@@ -67,16 +67,95 @@ void placerEleve(int rangee, int place, int tableau[rangee][place], Eleve liste_
         printf("\nAttention : il n'y a pas assez de places pour tous les eleves.\n");
         printf("%d eleves pour %d places.\n", nb_eleves, rangee * place);
     }
+    int eleves_a_placer = (nb_eleves > rangee * place) ? (rangee * place) : nb_eleves;
 
-    int eleve_actuel = 0;
+    if (eleves_a_placer == 0) {
+        return;
+    }
+
     printf("\n--- Placement des eleves ---\n");
-    for (int i = 0; i < rangee; i++) {
-        for (int j = 0; j < place; j++) {
-            if (eleve_actuel < nb_eleves) {
-                tableau[i][j] = eleve_actuel;
-                printf("Eleve : %s %s - rangee : %d - siege : %d\n", liste_eleves[eleve_actuel].prenom, liste_eleves[eleve_actuel].nom, i + 1, j + 1);
-                eleve_actuel++;
+
+    for (int k = 0; k < eleves_a_placer; k++) {
+
+        int primary_candidates[60][2];
+        int num_primary_candidates = 0;
+        int max_min_dist_sq = -1;
+
+        for (int r = 0; r < rangee; r++) {
+            for (int c = 0; c < place; c++) {
+                if (tableau[r][c] != -1) continue;
+
+                int current_min_dist_sq = 2000000;
+
+                if (k == 0) {
+                    current_min_dist_sq = 1;
+                } 
+                else {
+                    for (int r2 = 0; r2 < rangee; r2++) {
+                        for (int c2 = 0; c2 < place; c2++) {
+                            if (tableau[r2][c2] != -1) {
+                                int d_sq = (r - r2) * (r - r2) + (c - c2) * (c - c2);
+                                if (d_sq < current_min_dist_sq) {
+                                    current_min_dist_sq = d_sq;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (current_min_dist_sq > max_min_dist_sq) {
+                    max_min_dist_sq = current_min_dist_sq;
+                    num_primary_candidates = 0;
+                    primary_candidates[num_primary_candidates][0] = r;
+                    primary_candidates[num_primary_candidates][1] = c;
+                    num_primary_candidates++;
+                } else if (current_min_dist_sq == max_min_dist_sq) {
+                    primary_candidates[num_primary_candidates][0] = r;
+                    primary_candidates[num_primary_candidates][1] = c;
+                    num_primary_candidates++;
+                }
             }
+        }
+
+        int final_candidates[60][2];
+        int num_final_candidates = 0;
+
+        if (num_primary_candidates > 0) {
+            int min_diagonal_neighbors = 2000000;
+
+            for (int i = 0; i < num_primary_candidates; i++) {
+                int r_cand = primary_candidates[i][0];
+                int c_cand = primary_candidates[i][1];
+                int current_diagonal_neighbors = 0;
+
+                for (int r2 = 0; r2 < rangee; r2++) {
+                    for (int c2 = 0; c2 < place; c2++) {
+                        if (tableau[r2][c2] != -1) {
+                            if ((r_cand - r2) * (r_cand - r2) == 1 && (c_cand - c2) * (c_cand - c2) == 1) {
+                                current_diagonal_neighbors++;
+                            }
+                        }
+                    }
+                }
+
+                if (current_diagonal_neighbors < min_diagonal_neighbors) {
+                    min_diagonal_neighbors = current_diagonal_neighbors;
+                    num_final_candidates = 0;
+                    final_candidates[num_final_candidates][0] = r_cand;
+                    final_candidates[num_final_candidates][1] = c_cand;
+                    num_final_candidates++;
+                } else if (current_diagonal_neighbors == min_diagonal_neighbors) {
+                    final_candidates[num_final_candidates][0] = r_cand;
+                    final_candidates[num_final_candidates][1] = c_cand;
+                    num_final_candidates++;
+                }
+            }
+
+            int r_final = final_candidates[0][0];
+            int c_final = final_candidates[0][1];
+
+            tableau[r_final][c_final] = k;
+            printf("Eleve : %s %s - rangee : %d - siege : %d\n", liste_eleves[k].prenom, liste_eleves[k].nom, r_final + 1, c_final + 1);
         }
     }
 }
