@@ -1,7 +1,3 @@
-#include <windows.h>
-#include <commdlg.h>
-#include <stdio.h>
-#include <string.h>
 #include "pointH.h"
 
 #define ID_BTN_FILE 101

@@ -1,34 +1,34 @@
 --- Placement des eleves ---
-Eleve : Louis BORDELAIS - rangee : 1 - siege : 1
-Eleve : Edgar PULLES - rangee : 6 - siege : 7
-Eleve : Amal ELHIRECH - rangee : 1 - siege : 6
-Eleve : Lucas VERRON - rangee : 6 - siege : 1
-Eleve : Jed BENSLAMA - rangee : 4 - siege : 4
-Eleve : Anatole MAURIAC - rangee : 2 - siege : 3
-Eleve : Wilhelm MACAIGNE - rangee : 3 - siege : 7
-Eleve : Florian BAILLY - rangee : 3 - siege : 1
-Eleve : Louis BLANC - rangee : 6 - siege : 3
-Eleve : Hatem MARHRAOUI - rangee : 6 - siege : 5
-Eleve : Mathieu BERTRON - rangee : 1 - siege : 4
-Eleve : Lucas COELHO - rangee : 3 - siege : 5
-Eleve : Adam JAKUBOWSKI - rangee : 4 - siege : 2
-Eleve : Anaelle SOUINI-RENAUDON - rangee : 4 - siege : 6
-Eleve : Alexandre MOULIS - rangee : 1 - siege : 3
-Eleve : Louis GUERIN - rangee : 1 - siege : 5
-Eleve : Malo HAMON - rangee : 1 - siege : 7
+Eleve : Jed BENSLAMA - rangee : 1 - siege : 1
+Eleve : Mathieu BERTRON - rangee : 6 - siege : 7
+Eleve : Florian BAILLY - rangee : 1 - siege : 6
+Eleve : Lucas COELHO - rangee : 6 - siege : 1
+Eleve : Anatole MAURIAC - rangee : 4 - siege : 4
+Eleve : Louis BLANC - rangee : 2 - siege : 3
+Eleve : Anaelle SOUINI-RENAUDON - rangee : 3 - siege : 7
+Eleve : Malo HAMON - rangee : 3 - siege : 1
+Eleve : Hatem MARHRAOUI - rangee : 6 - siege : 3
+Eleve : Alexandre MOULIS - rangee : 6 - siege : 5
+Eleve : Louis BORDELAIS - rangee : 1 - siege : 4
+Eleve : Lucas VERRON - rangee : 3 - siege : 5
+Eleve : Edgar PULLES - rangee : 4 - siege : 2
+Eleve : Louis GUERIN - rangee : 4 - siege : 6
+Eleve : Wilhelm MACAIGNE - rangee : 1 - siege : 3
+Eleve : Adam JAKUBOWSKI - rangee : 1 - siege : 5
+Eleve : Amal ELHIRECH - rangee : 1 - siege : 7
 
 
 --- Plan de Classe ---
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Louis BORDELAIS    | Vide               | Alexandre MOULIS   | Mathieu BERTRON    | Louis GUERIN       | Amal ELHIRECH      | Malo HAMON         |
+| Jed BENSLAMA       | Vide               | Wilhelm MACAIGNE   | Louis BORDELAIS    | Adam JAKUBOWSKI    | Florian BAILLY     | Amal ELHIRECH      |
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Vide               | Vide               | Anatole MAURIAC    | Vide               | Vide               | Vide               | Vide               |
+| Vide               | Vide               | Louis BLANC        | Vide               | Vide               | Vide               | Vide               |
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Florian BAILLY     | Vide               | Vide               | Vide               | Lucas COELHO       | Vide               | Wilhelm MACAIGNE   |
+| Malo HAMON         | Vide               | Vide               | Vide               | Lucas VERRON       | Vide               | Anaelle SOUINI-REN |
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Vide               | Adam JAKUBOWSKI    | Vide               | Jed BENSLAMA       | Vide               | Anaelle SOUINI-REN | Vide               |
+| Vide               | Edgar PULLES       | Vide               | Anatole MAURIAC    | Vide               | Louis GUERIN       | Vide               |
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
 | Vide               | Vide               | Vide               | Vide               | Vide               | Vide               | Vide               |
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+
-| Lucas VERRON       | Vide               | Louis BLANC        | Vide               | Hatem MARHRAOUI    | Vide               | Edgar PULLES       |
+| Lucas COELHO       | Vide               | Hatem MARHRAOUI    | Vide               | Alexandre MOULIS   | Vide               | Mathieu BERTRON    |
 +--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+

@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <windows.h>
+#include <commdlg.h>
+#include <string.h>
 
 typedef struct Eleve {
     char prenom[50];
