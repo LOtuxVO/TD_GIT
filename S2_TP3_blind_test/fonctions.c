@@ -127,3 +127,76 @@ void jouer_extrait(const char *filename) {
     snprintf(command, sizeof(command), "ffplay -nodisp -autoexit -loglevel quiet -ss %d -t %d \"%s\"", start, duration, filename);
     system(command);
 }
+
+/* -------------------------------------------------- */
+/* GESTION DES SCORES                                 */
+/* -------------------------------------------------- */
+
+Score* charger_scores(const char *filename) {
+    FILE *f = fopen(filename, "r");
+    if (f == NULL) return NULL;
+
+    Score *head = NULL;
+    char line[256];
+
+    while (fgets(line, sizeof(line), f) != NULL) {
+        trim_newline(line);
+        if (strlen(line) == 0) continue;
+
+        char *name_token = strtok(line, ";");
+        char *score_token = strtok(NULL, ";");
+
+        if (name_token && score_token) {
+            Score *new_node = malloc(sizeof(Score));
+            strncpy(new_node->name, name_token, 255);
+            new_node->name[255] = '\0';
+            new_node->score = atoi(score_token);
+            new_node->next = head;
+            head = new_node;
+        }
+    }
+    fclose(f);
+    return head;
+}
+
+void update_score(Score **head, const char *player, int current_score) {
+    Score *current = *head;
+    while (current != NULL) {
+        if (strcmp(current->name, player) == 0) {
+            if (current_score > current->score) {
+                current->score = current_score;
+            }
+            return;
+        }
+        current = current->next;
+    }
+
+    // Joueur non trouvé, ajout en tête
+    Score *new_node = malloc(sizeof(Score));
+    strncpy(new_node->name, player, 255);
+    new_node->name[255] = '\0';
+    new_node->score = current_score;
+    new_node->next = *head;
+    *head = new_node;
+}
+
+void sauver_scores(const char *filename, Score *head) {
+    FILE *f = fopen(filename, "w");
+    if (f == NULL) return;
+
+    while (head != NULL) {
+        fprintf(f, "%s;%d\n", head->name, head->score);
+        Score *temp = head;
+        head = head->next;
+        free(temp); // On en profite pour libérer la mémoire (optionnel ici, mieux dans free_scores)
+    }
+    fclose(f);
+}
+
+void free_scores(Score *head) {
+    while (head != NULL) {
+        Score *temp = head;
+        head = head->next;
+        free(temp);
+    }
+}

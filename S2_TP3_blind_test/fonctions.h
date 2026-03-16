@@ -14,6 +14,11 @@ typedef struct song {
     char artiste[256];
 } Song;
 
+typedef struct score {
+    char name[256];
+    int score;
+    struct score *next;
+} Score;
 
 void trim_newline(char *s);
 
@@ -28,5 +33,13 @@ void melanger_chansons(Song songs[], int count);
 void choixPseudo(char *playerName);
 
 void jouer_extrait(const char *filename);
+
+Score* charger_scores(const char *filename);
+
+void update_score(Score **head, const char *player, int current_score);
+
+void sauver_scores(const char *filename, Score *head);
+
+void free_scores(Score *head);
 
 #endif

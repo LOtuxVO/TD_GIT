@@ -9,8 +9,8 @@ int main() {
 
     printf("--- Blind Test ---\n\n");
 
-    Song songs[150];
-    int song_count = charger_chansons("songs.txt", songs, 150   );
+    Song songs[50];
+    int song_count = charger_chansons("songs.txt", songs, 50);
 
     if (song_count <= 0) {
         fprintf(stderr, "Aucune chanson n'a pu etre chargee. Le programme va s'arreter.\n");
@@ -40,12 +40,32 @@ int main() {
 
     printf("\nBienvenue, %s ! Le blind-test va commencer.\n\n", playerName);
 
+    int score = 0;
+
     for (int i = 0; i < song_count; i++) {
         printf("Question %d/%d : Ecoutez la musique...\n", i + 1, song_count);
         jouer_extrait(songs[i].file);
-        printf("Fin de l'extrait.\n\n");
+        printf("Fin de l'extrait.\n");
+
+        char reponse[256];
+        printf("Quel est le titre ? ");
+        if (fgets(reponse, sizeof(reponse), stdin) != NULL) {
+            trim_newline(reponse);
+            if (string_equals_normalized(reponse, songs[i].titre)) {
+                printf("Bravo ! Bonne reponse.\n\n");
+                score++;
+            } else {
+                printf("Dommage. La reponse etait : %s\n\n", songs[i].titre);
+            }
+        }
     }
 
-    // a voir pour mettre sauvegarde des meilleurs score avec les pseudo dans un txt
+    printf("Partie terminee ! Votre score : %d / %d\n", score, song_count);
+
+    
+    Score *listeScores = charger_scores("scores.txt");
+    update_score(&listeScores, playerName, score);
+    sauver_scores("scores.txt", listeScores);
+
     return 0;
 }
