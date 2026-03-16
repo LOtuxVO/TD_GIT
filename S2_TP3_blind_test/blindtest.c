@@ -64,7 +64,7 @@ int main() {
 
     
     Score *listeScores = charger_scores("scores.txt");
-    update_score(&listeScores, playerName, score);
+    update_score(&listeScores, playerName, score, song_count);
     sauver_scores("scores.txt", listeScores);
 
     return 0;

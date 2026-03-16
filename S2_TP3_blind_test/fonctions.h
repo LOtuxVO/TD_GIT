@@ -17,6 +17,7 @@ typedef struct song {
 typedef struct score {
     char name[256];
     int score;
+    int total_songs;
     struct score *next;
 } Score;
 
@@ -36,7 +37,7 @@ void jouer_extrait(const char *filename);
 
 Score* charger_scores(const char *filename);
 
-void update_score(Score **head, const char *player, int current_score);
+void update_score(Score **head, const char *player, int current_score, int total_songs);
 
 void sauver_scores(const char *filename, Score *head);
 

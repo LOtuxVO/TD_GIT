@@ -137,7 +137,7 @@ Score* charger_scores(const char *filename) {
     if (f == NULL) return NULL;
 
     Score *head = NULL;
-    char line[256];
+    char line[512];
 
     while (fgets(line, sizeof(line), f) != NULL) {
         trim_newline(line);
@@ -145,12 +145,14 @@ Score* charger_scores(const char *filename) {
 
         char *name_token = strtok(line, ";");
         char *score_token = strtok(NULL, ";");
+        char *total_songs_token = strtok(NULL, ";");
 
-        if (name_token && score_token) {
+        if (name_token && score_token && total_songs_token) {
             Score *new_node = malloc(sizeof(Score));
             strncpy(new_node->name, name_token, 255);
             new_node->name[255] = '\0';
             new_node->score = atoi(score_token);
+            new_node->total_songs = atoi(total_songs_token);
             new_node->next = head;
             head = new_node;
         }
@@ -159,10 +161,10 @@ Score* charger_scores(const char *filename) {
     return head;
 }
 
-void update_score(Score **head, const char *player, int current_score) {
+void update_score(Score **head, const char *player, int current_score, int total_songs) {
     Score *current = *head;
     while (current != NULL) {
-        if (strcmp(current->name, player) == 0) {
+        if (strcmp(current->name, player) == 0 && current->total_songs == total_songs) {
             if (current_score > current->score) {
                 current->score = current_score;
             }
@@ -171,11 +173,12 @@ void update_score(Score **head, const char *player, int current_score) {
         current = current->next;
     }
 
-    // Joueur non trouvé, ajout en tête
+    // Joueur non trouvé pour ce nombre de titres, ajout en tête
     Score *new_node = malloc(sizeof(Score));
     strncpy(new_node->name, player, 255);
     new_node->name[255] = '\0';
     new_node->score = current_score;
+    new_node->total_songs = total_songs;
     new_node->next = *head;
     *head = new_node;
 }
@@ -185,10 +188,10 @@ void sauver_scores(const char *filename, Score *head) {
     if (f == NULL) return;
 
     while (head != NULL) {
-        fprintf(f, "%s;%d\n", head->name, head->score);
+        fprintf(f, "%s;%d;%d\n", head->name, head->score, head->total_songs);
         Score *temp = head;
         head = head->next;
-        free(temp); // On en profite pour libérer la mémoire (optionnel ici, mieux dans free_scores)
+        free(temp); // libérer la mémoire
     }
     fclose(f);
 }
