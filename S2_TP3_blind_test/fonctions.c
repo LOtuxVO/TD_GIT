@@ -120,7 +120,7 @@ void choixPseudo(char *playerName) {
 void jouer_extrait(const char *filename) {
     char command[512];
     // debut musique entre 20 et 60 secondes pour changer
-    int start = rand() % 40 + 20; 
+    int start = rand() % 30; 
     int duration = 8; // Duree de l'extrait
 
     // commande pour lancer la musica
