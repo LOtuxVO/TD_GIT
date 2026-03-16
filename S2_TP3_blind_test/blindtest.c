@@ -27,6 +27,7 @@ int main() {
     }
 
     printf("%d chansons chargees et melangees avec succes !\n", song_count);
+    // mis en commentaire pour pas tricher et avoir les solutions
  /* for (int i = 0; i < song_count; i++) {
         printf("  - Titre: %s, Artiste: %s, Fichier: %s\n", songs[i].titre, songs[i].artiste, songs[i].file);
     }
@@ -38,6 +39,12 @@ int main() {
     choixPseudo(playerName);
 
     printf("\nBienvenue, %s ! Le blind-test va commencer.\n\n", playerName);
+
+    for (int i = 0; i < song_count; i++) {
+        printf("Question %d/%d : Ecoutez la musique...\n", i + 1, song_count);
+        jouer_extrait(songs[i].file);
+        printf("Fin de l'extrait.\n\n");
+    }
 
     // a voir pour mettre sauvegarde des meilleurs score avec les pseudo dans un txt
     return 0;

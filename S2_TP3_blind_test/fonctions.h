@@ -27,5 +27,6 @@ void melanger_chansons(Song songs[], int count);
 
 void choixPseudo(char *playerName);
 
+void jouer_extrait(const char *filename);
 
 #endif

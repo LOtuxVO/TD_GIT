@@ -116,3 +116,14 @@ void choixPseudo(char *playerName) {
         }
     } while (!isValid);
 }
+
+void jouer_extrait(const char *filename) {
+    char command[512];
+    // debut musique entre 20 et 60 secondes pour changer
+    int start = rand() % 40 + 20; 
+    int duration = 8; // Duree de l'extrait
+
+    // commande pour lancer la musica
+    snprintf(command, sizeof(command), "ffplay -nodisp -autoexit -loglevel quiet -ss %d -t %d \"%s\"", start, duration, filename);
+    system(command);
+}
