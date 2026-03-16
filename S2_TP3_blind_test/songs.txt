@@ -4,3 +4,5 @@ musics\song3.mp3;Hakuna Matata;Le Roi Lion
 musics\song4.mp3;Mon Fils Ma Bataille;Daniel Balavoine
 musics\song5.mp3;Hotel California;Eagles
 musics\song6.mp3;Jerk It Out;Caesars
+musics\song7.mp3;Alive;Mondotek
+musics\song8.mp3;Conga;Miami Sound Machine
