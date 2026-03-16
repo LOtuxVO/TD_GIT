@@ -25,4 +25,7 @@ int charger_chansons(const char *filename, Song songs[], int max_songs);
 
 void melanger_chansons(Song songs[], int count);
 
+void choixPseudo(char *playerName);
+
+
 #endif

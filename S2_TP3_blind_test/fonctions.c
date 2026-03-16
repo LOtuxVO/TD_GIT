@@ -84,3 +84,35 @@ void melanger_chansons(Song songs[], int count) {
         songs[j] = temp;
     }
 }
+
+/* -------------------------------------------------- */
+/* GESTION DU JOUEUR                                  */
+/* -------------------------------------------------- */
+
+void choixPseudo(char *playerName) {
+    char input[256];
+    int isValid = 0;
+
+    do {
+        printf("Entrez votre pseudo (3 lettres, ex: ABC) : ");
+        if (fgets(input, sizeof(input), stdin) != NULL) {
+            trim_newline(input);
+
+            if (strlen(input) != 3) {
+                printf("erreur -> Le pseudo doit faire exactement 3 caracteres.\n\n");
+                continue;
+            }
+
+            isValid = 1;
+            for (int i = 0; i < 3; i++) {
+                if (!isalpha((unsigned char)input[i])) {
+                    printf("erreur -> Le pseudo ne doit contenir que des lettres.\n\n");
+                    isValid = 0;
+                    break;
+                }
+                playerName[i] = toupper((unsigned char)input[i]);
+            }
+            playerName[3] = '\0';
+        }
+    } while (!isValid);
+}

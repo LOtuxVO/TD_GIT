@@ -20,16 +20,25 @@ int main() {
     // Melange les musique
     melanger_chansons(songs, song_count);
 
-    // On garde que 5 chansons pour la partie
-    if (song_count > 5) {
-        song_count = 5;
+    // parametre pour avoir un nombre defini de musique par partie
+    int nombre_musique_par_partie = 5;
+    if (song_count > nombre_musique_par_partie) {
+        song_count = nombre_musique_par_partie;
     }
 
-    printf("%d chansons chargees et melangees avec succes :\n", song_count);
-    for (int i = 0; i < song_count; i++) {
+    printf("%d chansons chargees et melangees avec succes !\n", song_count);
+ /* for (int i = 0; i < song_count; i++) {
         printf("  - Titre: %s, Artiste: %s, Fichier: %s\n", songs[i].titre, songs[i].artiste, songs[i].file);
     }
     printf("\n");
+ */
 
+    // choix du pseudo en 3 caractere a la retro gaming
+    char playerName[4];
+    choixPseudo(playerName);
+
+    printf("\nBienvenue, %s ! Le blind-test va commencer.\n\n", playerName);
+
+    // a voir pour mettre sauvegarde des meilleurs score avec les pseudo dans un txt
     return 0;
 }
