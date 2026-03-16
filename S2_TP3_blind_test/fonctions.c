@@ -58,20 +58,29 @@ int charger_chansons(const char *filename, Song songs[], int max_songs) {
         }
 
         char *file_token = strtok(line, ";");
-        char *title_token = strtok(NULL, ";");
-        char *artist_token = strtok(NULL, ";");
+        char *titre_token = strtok(NULL, ";");
+        char *artiste_token = strtok(NULL, ";");
 
-        if (file_token == NULL || title_token == NULL || artist_token == NULL) {
+        if (file_token == NULL || titre_token == NULL || artiste_token == NULL) {
             fprintf(stderr, "Ligne mal formatee ignoree dans %s\n", filename);
             continue;
         }
 
         strncpy(songs[count].file, file_token, 256 - 1);
-        strncpy(songs[count].title, title_token, 256 - 1);
-        strncpy(songs[count].artist, artist_token, 256 - 1);
+        strncpy(songs[count].titre, titre_token, 256 - 1);
+        strncpy(songs[count].artiste, artiste_token, 256 - 1);
         count++;
     }
 
     fclose(f);
     return count;
+}
+
+void melanger_chansons(Song songs[], int count) {
+    for (int i = count - 1; i > 0; i--) {
+        int j = rand() % (i + 1);
+        Song temp = songs[i];
+        songs[i] = songs[j];
+        songs[j] = temp;
+    }
 }
