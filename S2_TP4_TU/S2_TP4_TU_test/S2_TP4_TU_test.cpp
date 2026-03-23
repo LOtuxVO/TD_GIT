@@ -13,22 +13,22 @@ namespace S2TP4TUtest
 	{
 	public:
 
-		TEST_METHOD(Testmax)
+		TEST_METHOD(Test)
 		{
-			Assert::AreEqual(max2(5, 3), 5);
+			Assert::AreEqual(factorielle(0), 1);
 		}
 
-		TEST_METHOD(Testmax2)
+		TEST_METHOD(Test2)
 		{
-			Assert::AreEqual(max2(3, 5), 5);
+			Assert::AreEqual(factorielle(1), 1);
 		}
-		TEST_METHOD(Testmax3)
+		TEST_METHOD(Test3)
 		{
-			Assert::AreEqual(max2(-1, -8), -1);
+			Assert::AreEqual(factorielle(4), 24);
 		}
-		TEST_METHOD(Testmax4)
+		TEST_METHOD(Test4)
 		{
-			Assert::AreEqual(max2(4, 4), 4);
+			Assert::AreEqual(factorielle(5), 120);
 		}
 	};
-}
+} 
