@@ -28,7 +28,7 @@ namespace S2TP4TUtest
 		}
 		TEST_METHOD(Test4)
 		{
-			Assert::AreEqual(factorielle(5), 120);
+			Assert::AreEqual(factorielle(-5), 120);
 		}
 	};
 } 

@@ -15,6 +15,9 @@ int max2(int a, int b) {
 
 int factorielle(int n) {
     int resultat = 1;
+	if (n < 0) {
+        n = -n;
+    }
     for (int i = 1; i <= n; i++) {
         resultat *= i;
     }
