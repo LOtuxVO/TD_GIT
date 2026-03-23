@@ -15,24 +15,20 @@ namespace S2TP4TUtest
 
 		TEST_METHOD(Test)
 		{
-			Assert::AreEqual(contientMajuscule("bonjour"), 0);
+			Assert::AreEqual(divisionExacte(10, 2), 1);
 		}
 
 		TEST_METHOD(Test2)
 		{
-			Assert::AreEqual(contientMajuscule("BonJour"), 1);
+			Assert::AreEqual(divisionExacte(10, 3), 0);
 		}
 		TEST_METHOD(Test3)
 		{
-			Assert::AreEqual(contientMajuscule("ABC"), 1);
+			Assert::AreEqual(divisionExacte(0, 5), 1);
 		}
 		TEST_METHOD(Test4)
 		{
-			Assert::AreEqual(contientMajuscule(""), 0);
-		}
-		TEST_METHOD(TestNULL)
-		{
-			Assert::AreEqual(contientMajuscule("null"), 0);
+			Assert::AreEqual(divisionExacte(10, 0), 0);
 		}
 	};
 } 
