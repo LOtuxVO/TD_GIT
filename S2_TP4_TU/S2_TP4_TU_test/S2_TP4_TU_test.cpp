@@ -30,5 +30,9 @@ namespace S2TP4TUtest
 		{
 			Assert::AreEqual(contientMajuscule(""), 0);
 		}
+		TEST_METHOD(TestNULL)
+		{
+			Assert::AreEqual(contientMajuscule("null"), 0);
+		}
 	};
 } 
