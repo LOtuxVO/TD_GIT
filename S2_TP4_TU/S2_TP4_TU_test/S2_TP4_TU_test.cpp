@@ -29,10 +29,10 @@ namespace S2TP4TUtest
 			int tab3[] = { -1, 4, -3 };
 			Assert::AreEqual(sommeTableau(tab3, 3), 0);
 		}
-	  /*TEST_METHOD(Test4)
+	  TEST_METHOD(Test4)
 		{
 			int tab4[] = {0};
 			Assert::AreEqual(sommeTableau(tab4, 1), 0);
-		}*/
+		}
 	};
 } 
