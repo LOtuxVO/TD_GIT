@@ -15,20 +15,20 @@ namespace S2TP4TUtest
 
 		TEST_METHOD(Test)
 		{
-			Assert::AreEqual(factorielle(0), 1);
+			Assert::AreEqual(contientMajuscule("bonjour"), 0);
 		}
 
 		TEST_METHOD(Test2)
 		{
-			Assert::AreEqual(factorielle(1), 1);
+			Assert::AreEqual(contientMajuscule("BonJour"), 1);
 		}
 		TEST_METHOD(Test3)
 		{
-			Assert::AreEqual(factorielle(4), 24);
+			Assert::AreEqual(contientMajuscule("ABC"), 1);
 		}
 		TEST_METHOD(Test4)
 		{
-			Assert::AreEqual(factorielle(-5), 120);
+			Assert::AreEqual(contientMajuscule(""), 0);
 		}
 	};
 } 
