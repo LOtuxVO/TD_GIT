@@ -1,4 +1,5 @@
 #include "TP4_TU.h"
+#include <stdlib.h>
 
 int estPair(int n) {
     return n % 2 == 0;
@@ -26,6 +27,9 @@ int factorielle(int n) {
 
 int contientMajuscule(const char* chaine) {
     int i = 0;
+    if (chaine == NULL) {
+        return 0;
+	}
     while (chaine[i] != '\0') {
         if (chaine[i] >= 'A' && chaine[i] <= 'Z') {
             return 1;

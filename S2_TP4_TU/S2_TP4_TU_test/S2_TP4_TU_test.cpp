@@ -15,20 +15,24 @@ namespace S2TP4TUtest
 
 		TEST_METHOD(Test)
 		{
-			Assert::AreEqual(divisionExacte(10, 2), 1);
+			int tab[] = { 1, 2, 3 };
+			Assert::AreEqual(sommeTableau(tab, 3), 6);
 		}
 
 		TEST_METHOD(Test2)
 		{
-			Assert::AreEqual(divisionExacte(10, 3), 0);
+			int tab2[] = { 5 };
+			Assert::AreEqual(sommeTableau(tab2, 1), 5);
 		}
 		TEST_METHOD(Test3)
 		{
-			Assert::AreEqual(divisionExacte(0, 5), 1);
+			int tab3[] = { -1, 4, -3 };
+			Assert::AreEqual(sommeTableau(tab3, 3), 0);
 		}
 		TEST_METHOD(Test4)
 		{
-			Assert::AreEqual(divisionExacte(10, 0), 0);
+			int tab4[] = {0};
+			Assert::AreEqual(sommeTableau(tab4, 1), 0);
 		}
 	};
 } 
