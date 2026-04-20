@@ -72,10 +72,10 @@ void rechercherParacetamol(Medicament Tab[80]) {
 
         if (strcmp(Tab[milieu].nom, "paracetamol") == 0) {
             trouve = milieu; 
-        } 
+        }
         else if (strcmp(Tab[milieu].nom, "paracetamol") < 0) {
             bas = milieu + 1;
-        } 
+        }
         else {
             haut = milieu - 1;
         }
@@ -90,10 +90,10 @@ void rechercherParacetamol(Medicament Tab[80]) {
 
 int main() {
     Medicament pharmacie[80];
-    
+
     gererStock(pharmacie);
-    
+
     rechercherParacetamol(pharmacie);
-    
+
     return 0;
 }
