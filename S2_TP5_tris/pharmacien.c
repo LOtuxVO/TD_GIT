@@ -61,10 +61,39 @@ void gererStock(Medicament Tab[80]) {
     printf("\nSaisie terminee et tableau trie par date de peremption.\n");
 }
 
+void rechercherParacetamol(Medicament Tab[80]) {
+    int bas = 0;
+    int haut = 80 - 1;
+    int milieu;
+    int trouve = -1;
+
+    while (bas <= haut && trouve == -1) {
+        milieu = (bas + haut) / 2;
+
+        if (strcmp(Tab[milieu].nom, "paracetamol") == 0) {
+            trouve = milieu; 
+        } 
+        else if (strcmp(Tab[milieu].nom, "paracetamol") < 0) {
+            bas = milieu + 1;
+        } 
+        else {
+            haut = milieu - 1;
+        }
+    }
+
+    if (trouve != -1) {
+        printf("\nLe medicament 'paracetamol' a ete trouve a l'indice %d.\n", trouve);
+    } else {
+        printf("\nLe medicament 'paracetamol' n'est pas dans le tableau.\n");
+    }
+}
+
 int main() {
     Medicament pharmacie[80];
     
     gererStock(pharmacie);
-
+    
+    rechercherParacetamol(pharmacie);
+    
     return 0;
 }
