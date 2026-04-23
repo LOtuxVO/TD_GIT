@@ -88,11 +88,26 @@ void rechercherParacetamol(Medicament Tab[80]) {
     }
 }
 
+void afficherLePlusCher(Medicament Tab[80]) {
+    int i;
+    int maxIdx = 0;
+
+    for (i = 1; i < 80; i++) {
+        if (Tab[i].prix_unitaire > Tab[maxIdx].prix_unitaire) {
+            maxIdx = i;
+        }
+    }
+
+    printf("\n--- Medicament le plus cher ---\n");
+    printf("Nom : %s\n", Tab[maxIdx].nom);
+    printf("Prix : %.2f $\n", Tab[maxIdx].prix_unitaire);
+}
+
 int main() {
     Medicament pharmacie[80];
 
     gererStock(pharmacie);
-
+    afficherLePlusCher(pharmacie);
     rechercherParacetamol(pharmacie);
 
     return 0;
