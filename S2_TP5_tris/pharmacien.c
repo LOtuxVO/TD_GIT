@@ -103,12 +103,30 @@ void afficherLePlusCher(Medicament Tab[80]) {
     printf("Prix : %.2f $\n", Tab[maxIdx].prix_unitaire);
 }
 
+float calculerTauxVentes(Medicament Tab[80]) {
+    int i;
+    int totalVendus = 0;
+    int totalRestant = 0;
+    float taux;
+
+    for (i = 0; i < 80; i++) {
+        totalVendus += Tab[i].unites_vendues;
+        totalRestant += Tab[i].stock_restant;
+    }
+
+    if ((totalVendus + totalRestant) == 0) return 0.0;
+
+    taux = ((float)totalVendus / (totalVendus + totalRestant)) * 100.0;
+    return taux;
+}
+
 int main() {
     Medicament pharmacie[80];
 
     gererStock(pharmacie);
     afficherLePlusCher(pharmacie);
     rechercherParacetamol(pharmacie);
+    printf("\nTaux global de medicaments vendus : %.2f%%\n", calculerTauxVentes(pharmacie));
 
     return 0;
 }
