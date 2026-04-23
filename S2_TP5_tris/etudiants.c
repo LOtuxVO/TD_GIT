@@ -39,6 +39,23 @@ void triRapide(Etudiant T[], int debut, int fin) {
     }
 }
 
+void triInsertionNom(Etudiant T[], int taille) {
+    int i, j;
+    Etudiant cle;
+
+    for (i = 1; i < taille; i++) {
+        cle = T[i];
+        j = i - 1;
+
+        while (j >= 0 && strcmp(T[j].nom, cle.nom) > 0) {
+            T[j + 1] = T[j];
+            j = j - 1;
+        }
+        
+        T[j + 1] = cle;
+    }
+}
+
 int main() {
     Etudiant liste[N];
     
@@ -56,6 +73,13 @@ int main() {
     printf("Classement par merite :\n");
     for(int i = 0; i < 3; i++) {
         printf("%d. %s - Moyenne : %.2f\n", i+1, liste[i].nom, liste[i].moyenne);
+    }
+
+    triInsertionNom(liste, 3);
+
+    printf("\nClassement alphabetique :\n");
+    for(int i = 0; i < 3; i++) {
+        printf("- %s %s\n", liste[i].nom, liste[i].prenom);
     }
 
     return 0;
