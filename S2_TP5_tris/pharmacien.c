@@ -17,6 +17,11 @@ typedef struct {
     int stock_restant;
 } Medicament;
 
+typedef struct Element {
+    Medicament m;
+    struct Element *suivant;
+} Element, *Liste;
+
 int estApres(Date d1, Date d2) {
     if (d1.annee > d2.annee) return 1;
     if (d1.annee < d2.annee) return 0;
@@ -120,6 +125,23 @@ float calculerTauxVentes(Medicament Tab[80]) {
     return taux;
 }
 
+void trierListeParCode(Liste L) {
+    if (L == NULL) return;
+
+    Element *i, *j;
+    Medicament temp;
+
+    for (i = L; i != NULL; i = i->suivant) {
+        for (j = i->suivant; j != NULL; j = j->suivant) {
+            if (strcmp(i->m.code, j->m.code) > 0) {
+                temp = i->m;
+                i->m = j->m;
+                j->m = temp;
+            }
+        }
+    }
+}
+
 int main() {
     Medicament pharmacie[80];
 
@@ -127,6 +149,8 @@ int main() {
     afficherLePlusCher(pharmacie);
     rechercherParacetamol(pharmacie);
     printf("\nTaux global de medicaments vendus : %.2f%%\n", calculerTauxVentes(pharmacie));
+    trierListeParCode(NULL);
+
 
     return 0;
 }
